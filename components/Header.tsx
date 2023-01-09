@@ -5,6 +5,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import useMediaQuery from './hooks/useMediaQuery';
 import { useState } from 'react';
 import { SelectedPage } from './shared/types';
+import Link from 'next/link';
 
 type Props = {
   selectedPage: SelectedPage;
@@ -21,9 +22,15 @@ const Header = ({ selectedPage, setSelectedPage }: Props) => {
         <div className="flex justify-between items-center">
           {/* logo */}
           <div>
-            <a href="./">
-              <Image src={'/logo.png'} alt="Logo" width={55} height={55} />
-            </a>
+            <Link href="./">
+              <Image
+                src={'/logo.png'}
+                alt="Logo"
+                width={55}
+                height={55}
+                className="w-[65px] h-[65px] rounded-full shadow transition duration-700 animate-pulse"
+              />
+            </Link>
           </div>
           {/* Links */}
           {isAboveMediaScreens ? (

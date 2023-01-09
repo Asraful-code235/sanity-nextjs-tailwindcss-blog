@@ -30,6 +30,9 @@ module.exports = {
           900: '#332b1d',
         },
       },
+      backgroundSize: {
+        130: '190%',
+      },
     },
     screens: {
       xs: '480px',
