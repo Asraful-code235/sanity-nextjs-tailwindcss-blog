@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import CustomeBtn from '../shared/CustomeBtn';
 import { SelectedPage } from '../shared/types';
+import { motion } from 'framer-motion';
 
 type Props = {
   selectedPage: SelectedPage;
@@ -11,17 +12,26 @@ const Hero = ({ selectedPage, setSelectedPage }: Props) => {
   return (
     <section
       id={`${SelectedPage.Home}`}
-      className="bg-black-500 h-[90vh] pt-16  w-full  "
+      className="bg-black-500 h-full md:h-[90vh] pt-16 py-20 md:py-0  w-full  "
     >
-      <div className="w-5/6 mx-auto text-white  ">
-        <div className="py-16 flex  justify-between items-center ">
+      <div className="md:w-5/6 w-full mx-auto text-white  ">
+        <div className="py-6 flex flex-col-reverse md:flex-row   justify-between items-center ">
           {/* content */}
-          <div className="flex   flex-col items-start justify-between ">
-            <h1 className="text-4xl font-bold  text-[#f8eee6] mb-2">
+          <motion.div
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex  w-5/6 md:w-full basis-4/5 md:-mt-20 mt-20  flex-col items-start justify-between "
+          >
+            <h1 className="md:text-4xl text-3xl font-bold  text-[#f8eee6] mb-2">
               Professional{' '}
-              <span className="text-[#ffe386] text-5xl">3D Designer</span>{' '}
+              <span className="text-[#ffe386] text-4xl md:text-5xl">
+                3D Designer
+              </span>{' '}
               specializing in{' '}
-              <span className="text-[#ffe386] text-5xl">Blender</span>
+              <span className="text-[#ffe386] text-4xl md:text-5xl">
+                Blender
+              </span>
             </h1>
             <p className="mb-6 font-medium  text-start text-[#f8eee6] ">
               Need high-quality 3D graphics and models? Look no further! Our
@@ -31,20 +41,20 @@ const Hero = ({ selectedPage, setSelectedPage }: Props) => {
             <div className="">
               <CustomeBtn>Contact Me</CustomeBtn>
             </div>
-          </div>
+          </motion.div>
           {/* right side */}
-          <div className=" h-full basis-3/6  relative">
-            <div className=" flex-1 before:absolute before:-top-20 before:-right-20 before:bg-[url('/bgImage.png')] before:z-[-1] ">
+          <motion.div className="min-h-[20rem] pt-20 md:pt-0 md:min-h-[41rem] w-full relative">
+            <motion.div className='before:absolute before:rounded-t-lg  before:left-0 md:before:left-20 before:-top-20 before:bg-no-repeat before:right-0 before:bg-cover before:bg-right md:before:-right-36 before:bottom-0 before:bg-[url("/heroImage.jpg")] before:rounded-l-2xl'></motion.div>
+            {/* <div className=" before:">
               <Image
                 src={'/heroImage.jpg'}
                 alt="hero-Image"
-                width={680}
-                height={660}
-                priority
-                className="w-full h-full bg-cover rounded-lg  bg-right "
+                width={400}
+                height={400}
+                className="h-full bg-cover rounded-lg  bg-center "
               />
-            </div>
-          </div>
+            </div> */}
+          </motion.div>
         </div>
       </div>
     </section>

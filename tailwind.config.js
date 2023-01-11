@@ -33,6 +33,9 @@ module.exports = {
       backgroundSize: {
         130: '190%',
       },
+      content: {
+        waves: 'url("/AbstractWaves.png)',
+      },
     },
     screens: {
       xs: '480px',

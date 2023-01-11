@@ -59,6 +59,18 @@ export default {
       of: [{ type: 'reference', to: { type: 'category' } }],
     },
     {
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      of: [
+        {
+          name: 'tag',
+          title: 'Tag',
+          type: 'string',
+        },
+      ],
+    },
+    {
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
