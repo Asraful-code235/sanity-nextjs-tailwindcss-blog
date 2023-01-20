@@ -63,8 +63,8 @@ const WorkPage = ({}: Props) => {
 
   return (
     <section>
-      <div className="relative h-auto bg-gray-900">
-        <div className="bg-gray-900 text-white px-6 py-6 flex flex-col ">
+      <div className="relative h-auto ">
+        <div className="bg-gray-100 text-gray-400 px-6 py-6 flex flex-col ">
           <Link href={'/#work'}>
             <button className=" hover:bg-slate-200 rounded-full bg-[#fdcb75] transition duration-500 p-2 mb-6 font-bold  hover:drop-shadow-lg cursor-pointer ">
               <ArrowLeftIcon className="h-6 w-6 text-white transition duration-500  " />
@@ -130,34 +130,11 @@ const WorkPage = ({}: Props) => {
                   <SwiperSlide key={i}>
                     <img
                       src={urlFor(image)}
-                      className="h-full w-5/6 mx-auto rounded-md object-center object-center"
+                      className="h-screen w-5/6 mx-auto rounded-md object-center object-center"
                     />
                   </SwiperSlide>
                 ))}
               </Swiper>
-              {/* <Carousel
-                showThumbs={false}
-                infiniteLoop={true}
-                // autoPlay={true}
-                ref={carouselRef}
-                selectedItem={currentIndex}
-                {...settings}
-                interval={2000}
-                transitionTime={400}
-                className="relative mt-28 w-full md:mt-0 h-auto md:w-5/6 mx-auto "
-              >
-                {work.secondaryImages.map((image: any) => (
-                  <div key={isIndex} className=" h-auto md:h-[680px] w-full">
-                    <img
-                      key={isIndex}
-                      src={urlFor(image)}
-                      // width={360}
-                      // height={400}
-                      className="h-full w-full rounded-md object-center object-center"
-                    />
-                  </div>
-                ))}
-              </Carousel> */}
             </div>
           )}
         </div>

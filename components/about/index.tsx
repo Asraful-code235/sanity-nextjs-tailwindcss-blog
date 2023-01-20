@@ -16,7 +16,7 @@ const container = {
 
 const About = ({ selectedPage, setSelectedPage }: Props) => {
   return (
-    <section id={`${SelectedPage.About}`} className="">
+    <section id={`${SelectedPage.About}`} className="pb-10">
       <motion.div
         whileInView={{
           y: [200, 0],
@@ -35,14 +35,14 @@ const About = ({ selectedPage, setSelectedPage }: Props) => {
         >
           <div className="">Get to know me </div>
         </motion.h1>
-        <div className="md:before:absolute overflow-visible   md:before:opacity-20 md:before:z-[-1] md:before:bg-contain md:before:bg-left md:before:bg-no-repeat md:before:w-full md:before:h-full   md:before:-top-32 md:before:left-[10rem]  md:before:bg-[url('/bgImage.png')]   flex flex-col sm:flex-row justify-center md:justify-between px-20 gap-16   py-2 rounded-md  items-center relative w-full h-full">
+        <div className="md:before:absolute overflow-visible   md:before:opacity-40 md:before:z-[-1] md:before:bg-contain md:before:bg-left md:before:bg-no-repeat md:before:w-full md:before:h-full   md:before:-top-32 md:before:left-[10rem]  md:before:bg-[url('/bgImage.png')]   flex flex-col sm:flex-row justify-center md:justify-between px-20 gap-16   py-2 rounded-md  items-center relative w-full h-full">
           {/* image */}
           <div className="h-[360px] w-[360px] ">
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 1.6 }}
-              className="bg-yellow-400 rounded-full overflow-hidden"
+              className="bg-yellow-400 rounded-lg h-[350px] overflow-hidden"
             >
               <motion.img
                 initial={{ opacity: 0, scale: 0.5 }}
@@ -57,9 +57,9 @@ const About = ({ selectedPage, setSelectedPage }: Props) => {
               />
             </motion.div>
           </div>
-          <div className="md:basis-3/5 flex-1 bg-transparent backdrop-blur-md ">
+          <div className="md:basis-3/5 flex-1 ">
             {/* content */}
-            <div className="text-slate-800 font-semibold ">
+            <div className="text-gray-100 font-semibold ">
               Highly skilled 3D graphic designer with passion for creating
               visually stunning digital content. Specializing in Blender, Adept
               at creating realistic & stylized 3D assets & scenes. Proven track
@@ -69,7 +69,9 @@ const About = ({ selectedPage, setSelectedPage }: Props) => {
               next project
             </div>
             <div className="mt-6">
-              <h4 className="uppercase font-semibold text-md mb-4">skills</h4>
+              <h4 className="uppercase text-gray-100  font-semibold text-md mb-4">
+                skills
+              </h4>
               <motion.div
                 initial="hidden"
                 animate="visible"
@@ -84,9 +86,9 @@ const About = ({ selectedPage, setSelectedPage }: Props) => {
                       animate={{ opacity: 1, scale: 1 }}
                       key={skills}
                       transition={{ duration: 0.5, delay: 1 }}
-                      className="bg-slate-300 rounded-lg p-2"
+                      className="bg-gray-800 rounded-lg p-2"
                     >
-                      <div className="text-sm font-bold cursor-pointer ">
+                      <div className="text-sm text-gray-100 font-bold cursor-pointer ">
                         {skills}
                       </div>
                     </motion.div>

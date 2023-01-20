@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { SelectedPage } from '../components/shared/types';
 import About from '../components/about';
 import Work from '../components/work';
+import Contact from '../components/contact';
 
 export default function Home() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(
@@ -19,6 +20,7 @@ export default function Home() {
       <Hero selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
       <About selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
       <Work setSelectedPage={setSelectedPage} />
+      <Contact setSelectedPage={setSelectedPage} />
     </Layout>
   );
 }

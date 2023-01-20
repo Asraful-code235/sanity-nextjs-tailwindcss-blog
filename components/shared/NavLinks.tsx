@@ -20,8 +20,8 @@ const NavLinks = ({
   return (
     <li
       className={`${
-        selectedPage === lowercase ? 'text-yellow-500' : ''
-      } hover:text-yellow-500 transition duration-500 md:font-medium text-lg font-semibold md:text-sm capitalize text-orange-500 md:text-yellow-600 `}
+        selectedPage === lowercase ? 'text-white' : ''
+      } hover:text-yellow-500 transition duration-500 md:font-medium text-lg font-semibold md:text-sm capitalize text-black-500 md:text-white `}
     >
       <Link
         href={`#${lowercase}`}

@@ -18,7 +18,7 @@ const Header = ({ selectedPage, setSelectedPage }: Props) => {
   const isAboveMediaScreens = useMediaQuery('(min-width: 1060px)');
 
   return (
-    <nav className="fixed top-0 z-50 left-0 right-0 bg-black-500">
+    <nav className="fixed top-0 z-50 left-0 right-0 bg-[#070707] backdrop-blur-lg">
       <motion.div className="w-5/6   mx-auto py-6">
         <div className="flex justify-between items-center">
           {/* logo */}
@@ -28,20 +28,21 @@ const Header = ({ selectedPage, setSelectedPage }: Props) => {
               opacity: 0,
             }}
             animate={{
-              x: 50,
+              x: 0,
               opacity: 1,
             }}
             transition={{ duration: 0.5, ease: 'easeIn' }}
             viewport={{ once: true, amount: 0.2 }}
           >
-            <Link href="./">
+            <Link href="./" className="flex items-center gap-2">
               <Image
                 src={'/logo.png'}
                 alt="Logo"
                 width={55}
                 height={55}
-                className="w-[65px] h-[65px] rounded-full shadow transition duration-700 animate-pulse"
+                className="w-[35px] h-[35px] rounded-full shadow transition duration-700 "
               />
+              <p className="text-[18px] uppercase text-white">Shoheb</p>
             </Link>
           </motion.div>
           {/* Links */}
@@ -66,9 +67,6 @@ const Header = ({ selectedPage, setSelectedPage }: Props) => {
                 ))}
               </ul>
               {/* contact */}
-              <div>
-                <CustomeBtn>Contact Me</CustomeBtn>
-              </div>
             </motion.div>
           ) : (
             <div>

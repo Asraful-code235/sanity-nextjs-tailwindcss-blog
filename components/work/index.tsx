@@ -59,7 +59,7 @@ const Work = ({ setSelectedPage }: Props) => {
         onViewportEnter={() => setSelectedPage(SelectedPage.Work)}
         className="w-5/6 mx-auto py-20"
       >
-        <h1 className="font-bold text-4xl text-center mt-16">
+        <h1 className="font-bold text-4xl text-center mt-16 text-gray-50">
           Some of my <span className="text-[#fddda8]">Projects</span>
         </h1>
         <div className="my-12">
@@ -74,41 +74,49 @@ const Work = ({ setSelectedPage }: Props) => {
                 <div
                   onClick={() => handleworkFilter(lowercase)}
                   key={i}
-                  className={`bg-slate-300 p-2 rounded-lg   ${
+                  className={`bg-gray-800 p-2 rounded-lg   ${
                     activeFilter === lowercase
                       ? 'bg-[#323436] text-white font-semibold'
-                      : ' font-semibold border shadow'
+                      : ' font-semibold  '
                   }
               `}
                 >
-                  <div className="capitalize">{lowercase}</div>
+                  <div className="capitalize text-gray-100">{lowercase}</div>
                 </div>
               );
             })}
           </div>
           <motion.div
             animate={animateCard}
-            className="flex flex-wrap items-start justify-start gap-6 mt-16"
+            className="flex flex-wrap items-start justify-start gap-2 mt-16"
           >
             {filterWork.map((work: any, i) => (
               <motion.div
-                whileHover={{ scale: [1, 1.01] }}
+                whileHover={{ scale: [1, 1] }}
                 transition={{
                   duration: 0.25,
                   ease: 'easeInOut',
                   staggerChildren: 0.5,
                 }}
                 key={i}
-                className="bg-slate-100 flex items-start cursor-pointer   justify-between flex-col"
+                className="bg-gray-200 flex rounded-sm  items-start cursor-pointer justify-between flex-col"
               >
                 <Link href={`/[slug]`} as={`/${work.slug.current}`}>
-                  <img
-                    src={urlFor(work.mainImage)}
-                    alt="image"
-                    width={360}
-                    height={400}
-                    className=" rounded-t-lg h-[340px]"
-                  />
+                  <div className=" h-[340px] w-[340px] overflow-hidden">
+                    <motion.img
+                      whileHover={{ scale: [1, 1.2] }}
+                      transition={{
+                        duration: 0.5,
+                        delay: 0.15,
+                        ease: 'easeInOut',
+                      }}
+                      src={urlFor(work.mainImage)}
+                      alt="image"
+                      width={360}
+                      height={400}
+                      className=" rounded-t-lg h-full w-full object-cover object-top"
+                    />
+                  </div>
                   <div className="gap-4 my-4 p-3">
                     <p className="text-xs text-gray-500">
                       Created At {work._createdAt}
