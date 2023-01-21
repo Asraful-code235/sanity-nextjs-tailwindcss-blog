@@ -2,6 +2,7 @@ import Image from 'next/image';
 import CustomeBtn from '../shared/CustomeBtn';
 import { SelectedPage } from '../shared/types';
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 
 type Props = {
   selectedPage: SelectedPage;
@@ -17,7 +18,9 @@ const Hero = ({ selectedPage, setSelectedPage }: Props) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="pt-10   h-[28rem]  md:h-[38rem] relative xs:before:absolute xs:before:bg-[url('/LandingImage.png')] xs:before:border-none xs:before:top-64 md:before:top-36  xs:before:z[-1] xs:before:w-full xs:before:h-full xs:before:bg-no-repeat before:bg-cover  md:before:bg-cover xs:before:bg-center xs:before:rounded-md xs:before:animate-none xs:before:transition "
+          style={{ backgroundAttachment: 'fixed' }}
+          data-speed="-0.5"
+          className="pt-10    h-[28rem]   md:h-[38rem] relative xs:before:absolute xs:before:bg-[url('/LandingImage.png')] xs:before:border-none xs:before:top-64 md:before:top-36  xs:before:z[-1] xs:before:w-full xs:before:h-full xs:before:bg-no-repeat before:bg-cover  md:before:bg-cover xs:before:bg-center xs:before:rounded-md xs:before:animate-none xs:before:transition "
         >
           <motion.div className="text-white text-center z-[10] ">
             <h1 className="text-4xl mb-4">

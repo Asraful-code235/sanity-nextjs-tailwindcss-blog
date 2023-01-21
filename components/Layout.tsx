@@ -20,7 +20,7 @@ const Layout = ({ children, title, selectedPage, setSelectedPage }: Props) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className=" max-w-[1450px] w-full sm:w-5/6 mx-auto ">
+      <div className=" max-w-[1450px] w-full sm:w-5/6 mx-auto overflow-hidden  ">
         <Header selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
         <main>{children}</main>
         <Footer />

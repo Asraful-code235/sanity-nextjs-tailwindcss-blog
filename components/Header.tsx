@@ -55,7 +55,7 @@ const Header = ({ selectedPage, setSelectedPage }: Props) => {
             >
               {/* nav Links */}
               <ul className="flex gap-6 ">
-                {['home', 'about', 'work', 'contact'].map((links) => (
+                {['home', 'about', 'work', 'blog', 'contact'].map((links) => (
                   <NavLinks
                     setIsMenuToggled={setIsMenuToggled}
                     isMenuToggled={isMenuToggled}
@@ -95,7 +95,7 @@ const Header = ({ selectedPage, setSelectedPage }: Props) => {
             <ul
               className={`flex justify-center items-center flex-col  md:flex-row gap-8 `}
             >
-              {['home', 'about', 'work', 'contact'].map((links) => (
+              {['home', 'about', 'work', 'blog', 'contact'].map((links) => (
                 <NavLinks
                   selectedPage={selectedPage}
                   setSelectedPage={setSelectedPage}

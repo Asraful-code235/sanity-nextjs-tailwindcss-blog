@@ -4,8 +4,7 @@ import { ReactNode, useEffect, useState } from 'react';
 import { Props } from 'next/script';
 import { motion } from 'framer-motion';
 import BlockContent from '@sanity/block-content-to-react';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
+// import { BlockContentSerializer } from '@sanity/block-content-to-react';
 import { ArrowLeftIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 
@@ -15,7 +14,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-// import 'react-id-swiper/lib/styles/swiper.css';
 
 interface Work {
   tags: any;
@@ -25,6 +23,7 @@ interface Work {
   title: string;
   description: string;
   mainImage: any;
+  block: any;
 }
 
 const WorkPage = ({}: Props) => {
@@ -49,69 +48,62 @@ const WorkPage = ({}: Props) => {
     setCurrentIndex(currentIndex);
   }, [currentIndex]);
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-
   if (!work) {
     return <div>Loading...</div>;
   }
 
   return (
-    <section>
+    <section className="bg-[#090909] w-full  mx-auto">
       <div className="relative h-auto ">
-        <div className="bg-gray-100 text-gray-400 px-6 py-6 flex flex-col ">
+        <div className=" text-gray-400 px-6 py-6 flex flex-col ">
           <Link href={'/#work'}>
-            <button className=" hover:bg-slate-200 rounded-full bg-[#fdcb75] transition duration-500 p-2 mb-6 font-bold  hover:drop-shadow-lg cursor-pointer ">
+            <button className="ml-8 hover:bg-slate-200 rounded-full bg-[#fdcb75] transition duration-500 p-2 mb-6 font-bold  hover:drop-shadow-lg cursor-pointer ">
               <ArrowLeftIcon className="h-6 w-6 text-white transition duration-500  " />
             </button>
           </Link>
-          <div className="text-start mt-20 w-5/6 mx-auto">
+          <div className="text-start mb-4 mt-6 w-5/6 mx-auto">
             <h1 className="text-4xl mb-4 uppercase font-medium text-[#fdcb75] ">
               {work.title}
             </h1>
-            <div className="whitespace-normal md:w-4/6 w-full pb-6">
+            <div className="whitespace-normal text-gray-100 md:w-4/6 w-full pb-6">
+              {/* <h1>{work.body}</h1> */}
               <BlockContent blocks={work.body} />
             </div>
           </div>
 
-          <div className="h-[400px] sm:h-[650px]  md:h-[750px] w-5/6 mx-auto border-b-2 border-slate-800 ">
-            <img
-              src={urlFor(work.mainImage)}
-              alt={'3d-main-image'}
-              className="w-full h-full  bg-contain bg-top"
-            />
-          </div>
-          <div className="flex mt-2 mb-2 flex-col md:flex-row justify-center items-center gap-2">
-            {work.secondaryImages.map((image: any, i: any) => (
-              <div
-                key={i}
-                onClick={() => {
-                  setIsClicked(!isClicked);
-                  setCurrentIndex(i);
-                }}
-                className="  h-[400px] w-full cursor-pointer  md:w-3/6"
-              >
-                <img
+          <div className="w-full md:w-5/6 mx-auto">
+            <div className=" h-[500px] w-full">
+              <img
+                src={urlFor(work.mainImage)}
+                alt={'3d-main-image'}
+                className="w-full h-full rounded-t-md  object-cover object-center"
+              />
+            </div>
+            <div className="flex  mb-2 flex-col md:flex-row justify-center items-center ">
+              {work.secondaryImages.map((image: any, i: any) => (
+                <div
                   key={i}
-                  src={urlFor(image)}
-                  // width={360}
-                  // height={400}
-                  className="h-full w-full rounded-md object-center object-center"
-                />
-              </div>
-            ))}
+                  onClick={() => {
+                    setIsClicked(!isClicked);
+                    setCurrentIndex(i);
+                  }}
+                  className="  h-[350px] w-full cursor-pointer  "
+                >
+                  <img
+                    key={image + i}
+                    src={urlFor(image)}
+                    className="h-full w-full object-cover object-center"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
 
           {isClicked && (
-            <div className="bg-slate-900 h-screen  w-full   fixed inset-0 ">
+            <div className="bg-[#090909] h-screen  w-full   fixed inset-0 ">
               <div
                 onClick={() => setIsClicked(!isClicked)}
-                className="my-6 ml-4 rounded-full  cursor-pointer w-min p-2 hover:bg-white "
+                className="my-2 ml-4 rounded-full  cursor-pointer w-min p-2 hover:bg-white "
               >
                 <XMarkIcon className="w-6 h-6 text-[#fdcb75]" />
               </div>

@@ -6,18 +6,12 @@ import { client, urlFor } from '../../client';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-interface Title {
-  title: string;
-}
-
 type Props = {
   setSelectedPage: (value: SelectedPage) => void;
 };
 
 const Work = ({ setSelectedPage }: Props) => {
   const [work, setWork] = useState([]);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const array: any[] = [];
   const [category, setCategory] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
   const [activeFilter, setActiveFilter] = useState('all');
@@ -25,9 +19,9 @@ const Work = ({ setSelectedPage }: Props) => {
 
   const handleworkFilter = (item: any) => {
     setActiveFilter(item);
-    setAnimateCard([{ y: 100, opacity: 0 }]);
+    // setAnimateCard([{ y: 100, opacity: 0 }]);
     setTimeout(() => {
-      setAnimateCard([{ y: 0, opacity: 1 }]);
+      // setAnimateCard([{ y: 0, opacity: 1 }]);
 
       if (item === 'all') {
         setFilterWork(work);
@@ -99,7 +93,7 @@ const Work = ({ setSelectedPage }: Props) => {
                   staggerChildren: 0.5,
                 }}
                 key={i}
-                className="bg-gray-200 flex rounded-sm  items-start cursor-pointer justify-between flex-col"
+                className="bg-gray-100 flex rounded-sm  items-start cursor-pointer justify-between flex-col"
               >
                 <Link href={`/[slug]`} as={`/${work.slug.current}`}>
                   <div className=" h-[340px] w-[340px] overflow-hidden">
@@ -114,14 +108,14 @@ const Work = ({ setSelectedPage }: Props) => {
                       alt="image"
                       width={360}
                       height={400}
-                      className=" rounded-t-lg h-full w-full object-cover object-top"
+                      className=" h-full w-full object-cover object-top"
                     />
                   </div>
                   <div className="gap-4 my-4 p-3">
                     <p className="text-xs text-gray-500">
                       Created At {work._createdAt}
                     </p>
-                    <p className="mt-4 text-xl font-medium text-gray-700">
+                    <p className="hover:text-[#f6cf8e] transition-colors duration-500 mt-4 text-xl font-medium text-gray-700">
                       {work.title}
                     </p>
                   </div>
