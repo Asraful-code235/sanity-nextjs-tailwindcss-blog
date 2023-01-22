@@ -7,21 +7,24 @@ export default {
       name: 'name',
       title: 'Name',
       type: 'string',
+      readOnly: true,
     },
     {
       name: 'email',
       title: 'Email',
       type: 'string',
+      readOnly: true,
     },
     {
       name: 'message',
       title: 'Message',
-      type: 'string',
+      type: 'text',
     },
     {
-      name: 'date',
-      title: 'Date',
-      type: 'datetime',
+      name: 'blogPost',
+
+      type: 'reference',
+      to: [{ type: 'blogPost' }],
     },
   ],
 };

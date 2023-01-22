@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { client, urlFor } from '../../client';
+import { urlFor } from '../../client';
 import { useCallback, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -7,7 +7,8 @@ import { ArrowLeftIcon } from '@heroicons/react/24/solid';
 import moment from 'moment';
 import imageUrlBuilder from '@sanity/image-url';
 import BlockContent from '@sanity/block-content-to-react';
-import CustomeBtn from '../../components/shared/CustomeBtn';
+import { client } from '../../client.js';
+import Form from '../../components/Form';
 
 interface Blogs {
   content: any;
@@ -17,13 +18,8 @@ interface Blogs {
   mainImage: JSX.Element;
   blog: string;
   setBlogs: any[];
-
+  _id: any;
   tags: string[];
-}
-
-interface RelatedBlog {
-  relatedBlog: string;
-  setRelatedBlog: string[];
 }
 
 const builder = imageUrlBuilder(client);
@@ -46,9 +42,10 @@ const serializers = {
 
 const BlogDetails = () => {
   const router = useRouter();
-  const { id, tag } = router.query;
+  const { id } = router.query;
   const [blog, setBlog] = useState<Blogs | null>(null);
   const [relatedBlog, setRelatedBlog] = useState<Blogs | null>(null);
+  const [comments, setComments] = useState<Blogs | null>(null);
 
   useEffect(() => {
     const query = `*[_type == "blogPost" && _id == "${id}"]`;
@@ -71,42 +68,19 @@ const BlogDetails = () => {
       }
     }
   }, [id, blog]);
+
   useEffect(() => {
     if (blog) fetchRelatedBlog();
   }, [blog, fetchRelatedBlog]);
 
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const { email, message, name } = formData;
+  useEffect(() => {
+    // const query = `*[_type == "comment" && references(^._id)]{name,email,_createdAt,message}`;
 
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    setLoading(true);
-    console.log('works');
-
-    const comment = {
-      _type: 'comment',
-      name: name,
-      email: email,
-      message: message,
-      date: new Date(),
-      // blogPostId: id,
-    };
-    client.create(comment).then(() => {
-      setLoading(false);
-      setIsFormSubmitted(true);
+    const query = `*[_type == "comment" && blogPost._ref == "${id}"]{email,_createdAt,message,name}`;
+    client.fetch(query).then((data) => {
+      setComments(data);
     });
-  };
+  }, [id]);
 
   return (
     <section className="bg-gray-50 w-full  mx-auto min-h-screen text-gray-500 ">
@@ -170,43 +144,29 @@ const BlogDetails = () => {
             </motion.div>
           </article>
           <section className="mt-16 w-full md:w-3/5">
-            {!isFormSubmitted ? (
-              <form className="flex flex-col gap-2 p-4 shadow ">
-                <input
-                  name="name"
-                  type="text"
-                  value={name}
-                  onChange={handleChange}
-                  placeholder="Enter your Name"
-                  className="bg-gray-200 px-8 py-3 rounded-lg text-gray-600"
-                />
-                <input
-                  name="email"
-                  type="email"
-                  value={email}
-                  onChange={handleChange}
-                  placeholder="Enter your email"
-                  className="bg-gray-200 px-8 py-3 rounded-lg text-gray-600"
-                />
-                <textarea
-                  name="message"
-                  value={message}
-                  onChange={handleChange}
-                  placeholder="Enter your message"
-                  className="bg-gray-200 px-8 py-8 rounded-lg text-gray-600"
-                />
-                <button
-                  onClick={handleSubmit}
-                  className="w-full px-8 py-3 bg-orange-500 text-white"
-                >
-                  {loading ? 'Sending' : 'Submit'}
-                </button>
-              </form>
-            ) : (
-              <div className="bg-green-400 text-xl font-bold text-center">
-                Thank you for for your valuable comment
+            <Form _id={blog._id} />
+            <section className="mt-8 shadow text-gray-800 p-4">
+              <div className="w-full underline underline-offset-4">
+                <h1 className="text-2xl py-6 w-full ">All comments</h1>
               </div>
-            )}
+
+              {comments?.map((comment: any, index: any) => (
+                <motion.div
+                  key={index}
+                  className="flex  flex-col gap-2 bg-gray-200 mb-2 rounded-md p-2"
+                >
+                  <div className="flex items-center gap-2 justify-start">
+                    <h1 className="text-xl font-semibold">{comment.name}</h1>
+                    <p className="text-sm text-gray-500 ">
+                      {moment(comment._createdAt).format('MM/DD/YYYY')}
+                    </p>
+                  </div>
+                  <div className="px-2 mb-4 text-base text-gray-500">
+                    <p>{comment.message}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </section>
           </section>
         </motion.div>
       )}

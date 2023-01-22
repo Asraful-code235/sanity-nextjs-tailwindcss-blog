@@ -94,11 +94,5 @@ export default {
         },
       ],
     },
-    {
-      name: 'comments',
-      title: 'Comments',
-      type: 'array',
-      of: [{ type: 'comment' }],
-    },
   ],
 };

@@ -27,7 +27,9 @@
     "react-dom": "^17.0",
     "styled-components": "^5.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@sanity/webpack-loader": "^2.35.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Asraful-code235/sanity-nextjs-tailwindcss-blog.git"
