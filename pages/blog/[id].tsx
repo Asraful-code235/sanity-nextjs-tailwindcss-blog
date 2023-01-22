@@ -87,7 +87,7 @@ const BlogDetails = () => {
       {blog && (
         <motion.div className="w-full md:w-5/6 mx-auto text-gray-100">
           <Link href={'/#blog'}>
-            <button className="mt-16 hover:bg-slate-200 rounded-full bg-[#fdcb75] transition duration-500 p-2 mb-6 font-bold  hover:drop-shadow-lg cursor-pointer ">
+            <button className="mt-16 ml-4 md:ml-0 hover:bg-slate-200 rounded-full bg-[#fdcb75] transition duration-500 p-2 mb-6 font-bold  hover:drop-shadow-lg cursor-pointer ">
               <ArrowLeftIcon className="h-6 w-6 text-white transition duration-500  " />
             </button>
           </Link>
@@ -107,17 +107,17 @@ const BlogDetails = () => {
                   {moment(blog._updatedAt).format('MM/DD/YYYY')}
                 </p>
               </div>
-              <div className="text-gray-400 px-4 mt-4 text-base">
+              <div className="text-gray-400 px-4 mt-4 text-base mb-8">
                 <BlockContent blocks={blog.content} serialize={serializers} />
               </div>
             </motion.div>
-            <motion.div className="col-span-1 shadow h-min p-4">
+            <motion.div className="col-span-1 shadow h-min p-4 px-8 md:px-4">
               <div className="underline">
                 <h1 className="text-gray-800 text-xl font-bold underline-offset-4 underline">
                   Related Posts
                 </h1>
               </div>
-              <div className="overflow-hidden flex flex-col gap-4 mt-8">
+              <div className="overflow-hidden flex flex-col gap-4 mt-8 ">
                 {relatedBlog &&
                   relatedBlog.map((data: any, index: any) => (
                     <motion.div key={index} className="cursor-pointer">

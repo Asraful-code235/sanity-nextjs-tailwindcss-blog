@@ -14,5 +14,5 @@ export default async function createComment(req: any, res: any) {
     },
   });
 
-  return res.status(418);
+  return res.status(200);
 }

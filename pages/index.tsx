@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Layout from '../components/Layout';
 import Hero from '../components/hero';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SelectedPage } from '../components/shared/types';
 import About from '../components/about';
 import Work from '../components/work';
@@ -12,6 +12,13 @@ export default function Home() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(
     SelectedPage.Home
   );
+
+  useEffect(() => {
+    document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+    });
+  }, []);
+
   return (
     <Layout
       title="Home"

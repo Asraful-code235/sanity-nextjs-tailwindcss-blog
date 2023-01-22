@@ -82,7 +82,7 @@ const Work = ({ setSelectedPage }: Props) => {
           </div>
           <motion.div
             animate={animateCard}
-            className="flex flex-wrap items-start justify-start gap-2 mt-16"
+            className="flex flex-wrap items-center justify-center md:items-start md:justify-start gap-2 mt-16"
           >
             {filterWork.map((work: any, i) => (
               <motion.div

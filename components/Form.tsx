@@ -31,6 +31,9 @@ export default function Form({ _id }) {
           onSubmit={handleSubmit(onSubmit)}
           className="shadow flex flex-col items-start justify-start gap-4 p-12"
         >
+          <h1 className="text-start px-2 font-bold text-2xl text-gray-800">
+            Comment
+          </h1>
           <input
             className="bg-gray-200 px-8 py-3 w-full rounded-lg text-gray-600"
             {...register('name', { required: true, maxLength: 20 })}
