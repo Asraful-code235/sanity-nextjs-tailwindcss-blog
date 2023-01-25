@@ -111,7 +111,7 @@ const Blog = ({ setSelectedPage }: Props) => {
                               delay: 0.15,
                               ease: 'easeInOut',
                             }}
-                            src={urlFor(item.mainImage)}
+                            src={urlFor(item.mainImage).toString()}
                             alt="image"
                             width={360}
                             height={400}

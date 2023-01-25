@@ -94,7 +94,7 @@ const BlogDetails = () => {
           <article className="grid grid-cols-1 md:grid-cols-4 gap-16 ">
             <motion.div className="mt-8 rounded-t-lg md:col-span-3 col-span-1 shadow ">
               <motion.img
-                src={urlFor(blog.mainImage)}
+                src={urlFor(blog.mainImage).toString()}
                 alt={blog.title}
                 className="w-full rounded-md h-auto  "
               />
@@ -124,7 +124,7 @@ const BlogDetails = () => {
                       <Link href={`/blog/[id]`} as={`/blog/${data._id}`}>
                         <div className="flex gap-4 items-center justify-start">
                           <img
-                            src={urlFor(data.mainImage)}
+                            src={urlFor(data.mainImage).toString()}
                             alt={data.title}
                             className="w-12 h-12 rounded-full object-cover object-center"
                           />

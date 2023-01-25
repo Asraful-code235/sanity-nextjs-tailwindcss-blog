@@ -74,7 +74,7 @@ const WorkPage = ({}: Props) => {
           <div className="w-full md:w-5/6 mx-auto">
             <div className=" h-[500px] w-full">
               <img
-                src={urlFor(work.mainImage)}
+                src={urlFor(work.mainImage).toString()}
                 alt={'3d-main-image'}
                 className="w-full h-full rounded-t-md  object-cover object-center"
               />
@@ -91,7 +91,7 @@ const WorkPage = ({}: Props) => {
                 >
                   <img
                     key={image + i}
-                    src={urlFor(image)}
+                    src={urlFor(image).toString()}
                     className="h-full w-full object-cover object-center"
                   />
                 </div>
@@ -121,7 +121,7 @@ const WorkPage = ({}: Props) => {
                 {work.secondaryImages.map((image: any, i: any) => (
                   <SwiperSlide key={i}>
                     <img
-                      src={urlFor(image)}
+                      src={urlFor(image).toString()}
                       className="h-screen w-5/6 mx-auto rounded-md object-center object-center"
                     />
                   </SwiperSlide>

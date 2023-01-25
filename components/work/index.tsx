@@ -104,7 +104,7 @@ const Work = ({ setSelectedPage }: Props) => {
                         delay: 0.15,
                         ease: 'easeInOut',
                       }}
-                      src={urlFor(work.mainImage)}
+                      src={urlFor(work.mainImage).toString()}
                       alt="image"
                       width={360}
                       height={400}
