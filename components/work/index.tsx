@@ -10,12 +10,17 @@ type Props = {
   setSelectedPage: (value: SelectedPage) => void;
 };
 
+interface Work {
+  work: any;
+  setWork: any[];
+}
+
 const Work = ({ setSelectedPage }: Props) => {
-  const [work, setWork] = useState([]);
+  const [work, setWork] = useState<any | null>(null);
+
   const [category, setCategory] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
   const [activeFilter, setActiveFilter] = useState('all');
-  const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
 
   const handleworkFilter = (item: any) => {
     setActiveFilter(item);
@@ -26,7 +31,7 @@ const Work = ({ setSelectedPage }: Props) => {
       if (item === 'all') {
         setFilterWork(work);
       } else {
-        setFilterWork(work.filter((work) => work.tags.includes(item)));
+        setFilterWork(work?.filter((w: any) => w.tags.includes(item)));
       }
     }, 500);
   };
@@ -80,10 +85,7 @@ const Work = ({ setSelectedPage }: Props) => {
               );
             })}
           </div>
-          <motion.div
-            animate={animateCard}
-            className="flex flex-wrap items-center justify-center md:items-start md:justify-start gap-2 mt-16"
-          >
+          <motion.div className="flex flex-wrap items-center justify-center md:items-start md:justify-start gap-2 mt-16">
             {filterWork.map((work: any, i) => (
               <motion.div
                 whileHover={{ scale: [1, 1] }}

@@ -11,6 +11,7 @@ import { client } from '../../client.js';
 import Form from '../../components/Form';
 
 interface Blogs {
+  _updatedAt: any;
   content: any;
   body: any;
   _createdAt: any;
