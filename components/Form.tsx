@@ -5,10 +5,12 @@ interface IFormInput {
   name: string;
   email: string;
   message: string;
-  _id: any;
 }
+type Props = {
+  _id: any;
+};
 
-export default function Form({ _id }) {
+export default function Form({ _id }: Props) {
   const { register, handleSubmit } = useForm<IFormInput>();
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
