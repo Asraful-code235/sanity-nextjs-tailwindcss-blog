@@ -21,7 +21,7 @@ const Contact = ({ setSelectedPage }: Props) => {
           Lets get in <span className="text-[#fdcb75]">touch</span>
         </h1>
         <motion.div className="flex items-center flex-col md:flex-row gap-10 mt-16  w-full justify-center">
-          <motion.div
+          {/* <motion.div
             whileHover={{ scale: [1, 1.05] }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
             className="bg-[#3c1aa3] w-72  text-white px-4 py-3 flex items-center justify-center rounded-md "
@@ -40,7 +40,7 @@ const Contact = ({ setSelectedPage }: Props) => {
             <a href="tel:+8801609546741" className="text-sm">
               +8801609546741
             </a>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
         <form className=" mt-12 items-center w-2/3">
           <div className="form-control mb-4">
